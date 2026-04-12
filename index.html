@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta
+      name="description"
+      content="Team meeting minutes for the FIFA World Cup 2026 project brainstorm session."
+    >
+    <title>FIFA World Cup 2026 First Brainstorm - Meeting Minutes</title>
+    <link rel="icon" href="assets/fifa-world-cup.ico" type="image/x-icon">
+  </head>
+  <body>
+    <header>
+      <h1>FIFA World Cup 2026 First Brainstorm Meeting</h1>
+      <h2>Meeting topic: initial feature brainstorm and scope</h2>
+      <h3>Date: Saturday, April 11, 2026</h3>
+
+      <nav aria-label="On this page">
+        <a href="#attendance">Attendance</a><br>
+        <a href="#agenda">Agenda</a><br>
+        <a href="#unfinished-business">Unfinished business</a><br>
+        <a href="#new-business">New business</a><br>
+        <a href="#miscellaneous">Miscellaneous</a><br>
+        <a href="#media">Diagrams and recordings</a><br>
+        <a href="#feedback-form">Feedback form</a>
+      </nav>
+
+      <hr>
+    </header>
+
+    <main>
+      <section id="attendance">
+        <h2>Attendance</h2>
+        <p>The following teammates were present:</p>
+        <ul>
+          <li><strong>Aditya Jadhav</strong> (scribe)</li>
+          <li>Alice Chen</li>
+          <li>Brian Patel</li>
+          <li>Maria Lopez</li>
+        </ul>
+      </section>
+
+      <section id="agenda">
+        <h2>Agenda</h2>
+        <ol>
+          <li>Welcome and goals for the session</li>
+          <li>Review unfinished items from the last check-in</li>
+          <li>Brainstorm core features</li>
+          <li>Discuss diagrams and technical direction</li>
+          <li>Action items and next meeting</li>
+        </ol>
+      </section>
+
+      <section id="unfinished-business">
+        <h2>Unfinished business</h2>
+        <div>
+          <p>
+            We still need to decide whether the first release should support
+            <b>interactive seating selection only</b> or also
+            <strong>live seat availability updates</strong> for users.
+          </p>
+          <p>
+            We also deferred a decision on whether notifications should be
+            <i>simple in-browser reminders</i> or more noticeable
+            <em>audio alerts</em> by default.
+          </p>
+        </div>
+      </section>
+
+      <section id="new-business">
+        <h2>New business</h2>
+        <p>
+          The team agreed to prototype a minimal stadium seating interface with
+          different sections and rows. We discussed adding a stadium map later,
+          and noted that
+          <span>accessibility for wheelchair seating and navigation</span>
+          should be considered from the first prototype onward.
+        </p>
+        <p>
+          We captured a rough component outline on the whiteboard: a seat
+          selection engine, a small UI layer for controls, and a lightweight
+          settings store for section, row, and seat preferences.
+        </p>
+      </section>
+
+      <section id="miscellaneous">
+        <h2>Miscellaneous comments, questions, and concerns</h2>
+        <details>
+          <summary>Notes from open discussion</summary>
+          <p>
+            Several teammates asked whether we should require a full stadium map
+            in version one. The group preferred keeping the first milestone
+            smaller unless a stadium clearly needs more advanced interaction.
+          </p>
+        </details>
+        <p>
+          Concern raised: avoid scope creep from "nice-to-have" features before
+          the core seating experience is stable.<br>
+          Follow-up question: do we want analytics on seat selection behavior,
+          or is that out of scope for the project?
+        </p>
+      </section>
+
+      <section id="media">
+        <h2>Diagrams and meeting recordings</h2>
+        <p>Whiteboard sketch of the proposed seating architecture and user flow:</p>
+        <img
+          src="assets/meeting-diagram.jpg"
+          alt="Whiteboard sketch showing boxes for seat selection engine, UI controls, and settings with arrows between them"
+          width="640"
+          height="480"
+        >
+
+        <p>Audio recording of the meeting:</p>
+        <audio controls>
+          <source src="assets/meeting-audio.mp3" type="audio/mpeg">
+          Your browser does not support embedded audio playback. Download the
+          recording from the team drive if you need the file.
+        </audio>
+
+        <p>Video recording of the meeting:</p>
+        <video controls width="640" height="360">
+          <source src="assets/meeting-video.mp4" type="video/mp4">
+          Your browser does not support embedded video playback. Download the
+          recording from the team drive if you need the file.
+        </video>
+      </section>
+
+      <section id="feedback-form">
+        <h2>Post-meeting feedback</h2>
+        <p>
+          This form is included for HTML practice only. It does not submit data
+          anywhere meaningful.
+        </p>
+        <form action="#" method="get">
+          <fieldset>
+            <legend>Quick team poll</legend>
+
+            <p>
+              <label for="respondent-name">Name</label><br>
+              <input
+                type="text"
+                id="respondent-name"
+                name="respondent-name"
+                autocomplete="name"
+              >
+            </p>
+
+            <p>
+              <label for="next-availability">Next availability</label><br>
+              <input type="date" id="next-availability" name="next-availability">
+            </p>
+
+            <p>Which brainstorm themes resonated with you? (Select any.)</p>
+            <ul>
+              <li>
+                <label>
+                  <input type="checkbox" name="resonance" value="ticketing">
+                  Ticketing and seat selection features
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="resonance" value="ui">
+                  Minimal UI with clear controls
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="resonance" value="accessibility">
+                  Accessibility and inclusive seating support
+                </label>
+              </li>
+            </ul>
+
+            <p>Preferred emphasis for the next sprint:</p>
+            <ul>
+              <li>
+                <label>
+                  <input type="radio" name="sprint-emphasis" value="design">
+                  Design and user flow
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    name="sprint-emphasis"
+                    value="implementation"
+                  >
+                  Core implementation
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="sprint-emphasis" value="testing">
+                  Testing and quality checks
+                </label>
+              </li>
+            </ul>
+
+            <p>
+              <label for="tool-suggestion">Suggest a tool (datalist)</label><br>
+              <input
+                type="text"
+                id="tool-suggestion"
+                name="tool-suggestion"
+                list="common-tools"
+              >
+              <datalist id="common-tools">
+                <option value="VS Code"></option>
+                <option value="GitHub"></option>
+                <option value="Chrome DevTools"></option>
+                <option value="Figma"></option>
+              </datalist>
+            </p>
+
+            <p>
+              <label for="role-interest">Role you are most interested in</label><br>
+              <select id="role-interest" name="role-interest">
+                <option value="frontend">Frontend</option>
+                <option value="backend">Backend</option>
+                <option value="design">Design</option>
+                <option value="qa">QA</option>
+              </select>
+            </p>
+
+            <p>
+              <label for="open-feedback">Additional comments</label><br>
+              <textarea
+                id="open-feedback"
+                name="open-feedback"
+                rows="5"
+                cols="50"
+              ></textarea>
+            </p>
+
+            <p>
+              <button type="submit">Submit</button>
+            </p>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <hr>
+      <p>Created for CSE 110 Lab 2 by Aditya Jadhav.</p>
+      <p><a href="README.md">View README</a></p>
+    </footer>
+  </body>
+</html>
