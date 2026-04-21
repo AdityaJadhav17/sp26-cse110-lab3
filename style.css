@@ -1,0 +1,352 @@
+/* ==========================================================================
+   CSE 110 Lab 3 — Meeting Minutes Stylesheet
+   Author: Aditya Jadhav
+   This file is intentionally organized so each Lab 3 CSS requirement
+   is easy to locate. See the checklist in the assignment write-up.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. CSS variables (custom properties) — used with var(..., fallback)
+   -------------------------------------------------------------------------- */
+:root {
+  --primary:      hsl(220, 65%, 32%);            /* hsl color */
+  --primary-soft: hsla(220, 65%, 32%, 0.12);     /* hsla color */
+  --accent:       rgb(12, 132, 94);              /* rgb color */
+  --ink:          rgba(18, 22, 40, 0.92);        /* rgba color */
+  --surface:      #f6f7fb;                       /* hex color */
+  --card:         #FFFFFF;                       /* hex (6 digit) */
+  --muted:        #6b7280;
+  --wide-gamut:   color(display-p3 0.18 0.52 0.92); /* wider-gamut color() */
+  --mix:          color-mix(in oklab, orange 55%, white); /* color-mix() */
+  --radius:       12px;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Universal selector — simple reset
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Base (element selector) styles
+   -------------------------------------------------------------------------- */
+body {
+  /* margin shorthand + margin: auto (horizontal centering) */
+  margin: 0 auto;
+
+  /* sizing: width, max-width, min-width */
+  width: 92%;
+  max-width: 960px;
+  min-width: 320px;
+
+  /* padding shorthand */
+  padding: 16px 24px;
+
+  background-color: var(--surface, whitesmoke);
+  color: var(--ink, #111);
+  font-family: "Inter", system-ui, -apple-system, Arial, sans-serif;
+  line-height: 1.55;
+}
+
+/* selector list */
+h1, h2, h3 {
+  color: var(--primary, navy);
+  text-align: left;
+  margin-top: 0.9em;
+  margin-bottom: 0.35em;
+}
+
+h1 {
+  font-size: 2rem;               /* relative unit: rem */
+  padding-bottom: 0.2em;         /* padding longhand + relative unit: em */
+
+  /* border longhand — style, color, width, and radius */
+  border-bottom-style: solid;
+  border-bottom-color: var(--accent, teal);
+  border-bottom-width: 3px;
+  border-radius: 0;
+}
+
+/* descendant combinator */
+header h1 {
+  letter-spacing: 0.01em;
+}
+
+/* modern CSS nesting */
+header {
+  padding: 8pt 0;                /* absolute unit: pt */
+
+  & h2 {
+    color: var(--muted, #555);
+    font-weight: 500;
+  }
+
+  & h3 {
+    color: var(--wide-gamut, #0a66c2);
+    font-size: 1rem;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Navigation — Flexbox layout + sticky position
+   -------------------------------------------------------------------------- */
+nav {
+  /* position (sticky) — requirement: >=2 position values used in file */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  background-color: var(--card, white);
+  border: 1px solid var(--primary-soft, #e5e7eb);
+  border-radius: var(--radius);
+
+  /* margin longhand */
+  margin-top: 1em;
+  margin-right: 0;
+  margin-bottom: 1em;
+  margin-left: 0;
+
+  padding: 10px 14px;
+
+  /* Flexbox: display + more than 2 children + 3+ flex properties */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem 1rem;              /* relative unit: rem */
+}
+
+/* child combinator */
+nav > a {
+  display: inline-block;         /* display: inline-block */
+  padding: 0.25em 0.6em;
+  color: var(--primary);
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+/* use display: none (second required display value) */
+nav br {
+  display: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Pseudo-classes — :hover and :active
+   -------------------------------------------------------------------------- */
+a:hover {
+  text-decoration: underline;
+  background-color: var(--primary-soft);
+}
+
+a:active {
+  color: #FFFFFF;
+  background-color: var(--primary);
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Attribute selectors
+   -------------------------------------------------------------------------- */
+input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: var(--accent);
+}
+
+[autocomplete="name"] {
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--primary-soft);
+}
+
+
+/* --------------------------------------------------------------------------
+   7. Main — CSS Grid layout (>2 children = 7 sections)
+   -------------------------------------------------------------------------- */
+main {
+  display: grid;                   /* Grid: display */
+  grid-template-columns: 1fr;      /* Grid prop 1 */
+  grid-auto-rows: auto;            /* Grid prop 2 */
+  gap: 18px;                       /* Grid prop 3 */
+  margin-top: 1rem;
+}
+
+/* section styling + relative position (2nd position value) */
+section {
+  position: relative;
+  background-color: var(--card, #fff);
+  padding: 12px 20px 16px 20px;    /* padding shorthand */
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+}
+
+/* adjacent sibling combinator: h2 immediately followed by p */
+section h2 + p {
+  color: var(--muted, #555);
+  font-style: italic;
+}
+
+/* general sibling combinator: any ul that follows h2 within section */
+section h2 ~ ul {
+  padding-left: 1.25rem;           /* padding longhand */
+}
+
+
+/* --------------------------------------------------------------------------
+   8. Class selector + combined selector + :has()
+   -------------------------------------------------------------------------- */
+.scribe {
+  color: var(--accent, green);
+}
+
+/* element.class — combining two selectors */
+li.scribe {
+  background-color: color-mix(in srgb, var(--accent) 12%, white);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+/* :has() relational pseudo-class */
+section:has(img),
+section:has(video) {
+  outline: 2pt solid transparent;  /* absolute unit: pt */
+}
+
+section:has(video):hover {
+  outline-color: var(--accent);
+}
+
+
+/* --------------------------------------------------------------------------
+   9. ID selector — the feedback form section
+   -------------------------------------------------------------------------- */
+#feedback-form {
+  background-color: var(--mix, #fff4e6);
+}
+
+
+/* --------------------------------------------------------------------------
+  10. Attendance flex row (second flex container, 4 children)
+   -------------------------------------------------------------------------- */
+#attendance ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  list-style: none;
+  padding-left: 0;
+}
+
+#attendance li {
+  background-color: #eef2ff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  height: auto;                    /* height */
+  min-width: 120px;
+}
+
+
+/* --------------------------------------------------------------------------
+  11. Forms and buttons
+   -------------------------------------------------------------------------- */
+form {
+  background-color: var(--card, #fff);
+  padding: 12px 16px;
+  /* border longhand triple: style, color, width */
+  border-style: solid;
+  border-color: #d1d5db;
+  border-width: 1px;
+  border-radius: var(--radius);
+}
+
+fieldset {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+button {
+  background-color: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  text-align: center;              /* text-align */
+  padding: 0.5em 1em;
+  border: 0 solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: color-mix(in srgb, var(--primary) 80%, black);
+}
+
+button:active {
+  background-color: var(--accent);
+}
+
+
+/* --------------------------------------------------------------------------
+  12. Media (img / video / audio)
+   -------------------------------------------------------------------------- */
+img,
+video {
+  width: 100%;                     /* width */
+  height: auto;
+  max-width: 640px;                /* max-width */
+  min-width: 240px;                /* min-width */
+  border-radius: var(--radius);
+  border: 1px solid #e2e8f0;
+}
+
+audio {
+  width: 100%;
+  max-width: 520px;
+}
+
+
+/* --------------------------------------------------------------------------
+  13. Footer + hr
+   -------------------------------------------------------------------------- */
+footer {
+  margin-top: 2rem;
+  padding: 0.5in 10pt;             /* absolute units: in and pt */
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+hr {
+  border-top-style: dashed;
+  border-top-color: var(--primary-soft);
+  border-top-width: 1px;
+}
+
+
+/* --------------------------------------------------------------------------
+  14. Responsiveness — reflow for narrower screens
+   -------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  body {
+    width: 100%;
+    padding: 10px;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #attendance ul {
+    flex-direction: column;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+  }
+}
